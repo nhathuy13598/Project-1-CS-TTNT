@@ -1,1 +1,2 @@
 # Project-1-CS-TTNT
+## PROJECT 1 PSEDU-CODE
