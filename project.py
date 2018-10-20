@@ -175,7 +175,7 @@ def main():
 		matrix=file[0]
 		result=mylist(A(start,goal,matrix))
 		f = writeFile(sys.argv[2],"w", (len(result),matrix,result,start,goal))
-		if not file:
+		if not f:
 			print("Error!!!")
 	else:
 		print("Error!!!")
