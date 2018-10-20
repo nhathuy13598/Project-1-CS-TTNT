@@ -15,11 +15,11 @@ class Node():
 
 	# Hàm heuristic
 	def heuristic(self,g):
-		return math.sqrt(math.pow(g.x-self.x,2)+math.pow(g.y-self.y,2))
+		return math.sqrt(math.pow(g.x-self.x,2) + math.pow(g.y-self.y,2))
 
 	# Hàm tính f(n)
 	def f_n(self,g):
-		return self.heuristic(g)+self.g
+		return self.heuristic(g) + self.g
 
 	# Hàm tính thứ tự mở
 	def __lt__(self, other):
@@ -50,11 +50,11 @@ def readfile(filename):
 
 		#read start point
 		a = file.readline()
-		start = (int(a[:a.find(" ")]),int(a[a.find(" "):]))
+		start = (int(a[:a.find(" ")]), int(a[a.find(" "):]))
 
 		#read goal point
 		a = file.readline()
-		goal = (int(a[:a.find(" ")]),int(a[a.find(" "):]))
+		goal = (int(a[:a.find(" ")]), int(a[a.find(" "):]))
 
 		#read matrix
 		data = []
@@ -65,8 +65,8 @@ def readfile(filename):
 			while (b < len(d)):
 				if d[b] == " ":
 					data[i].append(int(d[a:b]))
-					a=b
-				b+=1
+					a = b
+				b += 1
 			data[i].append(int(d[a:]))
 		file.close()
 		return (matrix(size,data),start,goal)
@@ -81,15 +81,15 @@ class matrix:
 		self.size = size
 		self.data = data
 	def check(self,x,y):
-		if (x >= 0)&(x<self.size)&(y>=0)&(y<self.size):
-			if self.data[x][y]==0:
+		if (x >= 0) & (x<self.size) & (y>=0) & (y<self.size):
+			if self.data[x][y] == 0:
 				return True
 		else:
 			return False
 	def subNode(self,node):
-		x=[-1,-1,-1,0,1,1,1,0]
-		y=[-1,0,1,1,1,0,-1,-1]
-		sub=[]
+		x = [-1,-1,-1,0,1,1,1,0]
+		y = [-1,0,1,1,1,0,-1,-1]
+		sub = []
 		for i in range(8):
 			x_new = node.x+x[i]
 			y_new = node.y+y[i]
@@ -105,20 +105,20 @@ class matrix:
 class mylist(list):
 	def is_containt(self,other):
 		for i in self:
-			if (i.x==other.x)&(i.y==other.y):
+			if (i.x == other.x) & (i.y == other.y):
 				return True
 		return False
 #--------------------------------End of Class Mylist--------------------------------#
 
 #---------------------------Thuật toán tìm đường đi--------------------------------#
 def A(start,goal,matrix):
-	open=PriorityQueue()
-	close=mylist()#opened node
+	open = PriorityQueue()
+	close = mylist()#opened node
 	open.put((start.f_n(goal),start))
 	while not open.empty():
 		x = open.get()[1]
-		if (x.x == goal.x)&(x.y == goal.y):
-			result=list()
+		if (x.x == goal.x) & (x.y == goal.y):
+			result = list()
 			while not x.parent == None:
 				result.append(x)
 				x = x.parent
@@ -136,27 +136,27 @@ def A(start,goal,matrix):
 
 #-------------------------------Ghi file-------------------------------------------#
 def writeFile(filename,mode, data):
-	file=open(filename, mode)
-	if file !=False:
+	file = open(filename, mode)
+	if file != False:
 		file.write(int.__str__(data[0])+'\n')
 		for i in data[2]:
 			file.write("({0},{1}) ".format(i.x,i.y))
 		file.write("\n")
 		for i in range(data[1].size):
-			str=""
+			str = ""
 			for j in range(data[1].size):
 				
-				if (i==data[3].x)&(j==data[3].y):
-					str=str+"S "
+				if (i == data[3].x) & (j == data[3].y):
+					str = str + "S "
 				elif data[2].is_containt(Node(i,j,None)):
-					str=str+"x "
-				elif i==data[4].x&j==data[4].y:
-					str=str+"G "
+					str = str + "x "
+				elif i == data[4].x & j == data[4].y:
+					str = str + "G "
 				else:
-					if data[1].data[i][j]==0:
-						str=str+"- "
+					if data[1].data[i][j] == 0:
+						str = str + "- "
 					else:
-						str=str+"o "
+						str = str + "o "
 			file.write(str+'\n')
 		else: 
 			return False
@@ -165,15 +165,15 @@ def writeFile(filename,mode, data):
 
 # Hàm main
 def main():
-	if(len(sys.argv)==3):
-		file=readfile(sys.argv[1])
+	if(len(sys.argv) == 3):
+		file = readfile(sys.argv[1])
 		if not file: 
 			print("Error!!!")
 			return
-		start=Node(file[1][0],file[1][1],None)
-		goal=Node(file[2][0],file[2][1],None)
-		matrix=file[0]
-		result=mylist(A(start,goal,matrix))
+		start = Node(file[1][0],file[1][1],None)
+		goal = Node(file[2][0],file[2][1],None)
+		matrix = file[0]
+		result = mylist(A(start,goal,matrix))
 		f = writeFile(sys.argv[2],"w", (len(result),matrix,result,start,goal))
 		if not f:
 			print("Error!!!")
