@@ -11,10 +11,7 @@ from queue import PriorityQueue
 # Hàm main
 def main():
 	if(len(sys.argv) == 3):
-		file = read.readfile(sys.argv[1])
-		if not file: 
-			print("Error!!!")
-			return
+		file = read.openfile(sys.argv[1],"r")
 		start = Node(file[1][0],file[1][1],None)
 		goal = Node(file[2][0],file[2][1],None)
 		matrix = file[0]
@@ -24,4 +21,5 @@ def main():
 			print("Error!!!")
 	else:
 		print("Error!!!")
+	print("Complete!!!")
 main()
