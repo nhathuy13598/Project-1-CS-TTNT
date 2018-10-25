@@ -6,9 +6,8 @@
 struct Node{
   x,
   y,
-  value // tọa độ của node (x,y) quy về một số nguyên theo kích thước của ma trận,
   heuristic,
-  Node parent
+  Node* parent
 };
 ```
 ##### Mở rộng Node
