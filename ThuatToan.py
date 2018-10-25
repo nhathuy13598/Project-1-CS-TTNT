@@ -18,9 +18,11 @@ def A(start:Node,goal:Node,matrix:list):
 	close = mylist()
 
 	# Dua nut start vao open
-	open.put((start.f_n(goal),start))
+	open.put((start.heuristic(goal),start))
 	result = list()
 	while not open.empty():
+		print("Danh sach cac node")
+		
 		x:Node = open.get()[1]
 
 		# Tra ve loi giai
@@ -34,11 +36,14 @@ def A(start:Node,goal:Node,matrix:list):
 			return result
 
 		# Mo rong nut
-		sub = x.subNode(matrix)
 		close.append(x)
+		sub = x.subNode(goal,close,matrix)
 		for i in sub:
-			if not close.is_containt(i):
-				open.put((i.f_n(goal),i))
+			if not close.is_contains(i):
+				open.put((i.heuristic(goal),i))
+
+		for item in list(open.queue):
+			print("{0},{1}): f = {2},g = {3},stt = {4}".format(item[1].x,item[1].y,item[0],item[1].g,item[1].stt))
 	return result
 
 
