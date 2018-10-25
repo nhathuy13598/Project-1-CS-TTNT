@@ -22,7 +22,7 @@ def writeFile(filename,mode,data):
 						str = str + "S "
 					elif i == data[4].x and j == data[4].y:
 						str = str + "G "
-					elif data[2].is_containt(ClassNode.Node(i,j,None)):
+					elif data[2].is_contains(ClassNode.Node(i,j,None)):
 						str = str + "x "
 					elif data[1][i][j] == 0:
 						str = str + "- "

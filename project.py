@@ -22,10 +22,6 @@ def main():
 
 		# Lay nut goal
 		goal = Node(file[2][0],file[2][1],None)
-		if goal.check(matrix) == False:
-			print("Diem goal la diem khong di duoc")
-			print("Complete!!!")
-			return
 
 		# Giai bai toan
 		result = mylist(ThuatToan.A(start,goal,matrix))
