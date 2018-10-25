@@ -1,4 +1,3 @@
-from Class.ClassMatrix import matrix
 
 # Mở file
 def openfile(filename, mode) -> tuple:  
@@ -9,11 +8,11 @@ def openfile(filename, mode) -> tuple:
 		
 			#read start point
 			a = file.readline()
-			start = (int(a[:a.find(" ")]), int(a[a.find(" "):]))
+			start = tuple(map(int,a.split()))
 
 			#read goal point
 			a = file.readline()
-			goal = (int(a[:a.find(" ")]), int(a[a.find(" "):]))
+			goal = tuple(map(int,a.split()))
 
 			#read matrix
 			data = []
