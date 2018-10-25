@@ -19,13 +19,13 @@ def A(start:Node,goal:Node,matrix:list):
 
 	# Dua nut start vao open
 	open.put((start.f_n(goal),start))
-
+	result = list()
 	while not open.empty():
 		x:Node = open.get()[1]
 
-		# Tra ve ket qua
+		# Tra ve loi giai
 		if (x.x == goal.x) & (x.y == goal.y):
-			result = list()
+			
 			while not x.parent == None:
 				result.append(x)
 				x = x.parent
@@ -39,7 +39,7 @@ def A(start:Node,goal:Node,matrix:list):
 		for i in sub:
 			if not close.is_containt(i):
 				open.put((i.f_n(goal),i))
-	return False
+	return result
 
 
 

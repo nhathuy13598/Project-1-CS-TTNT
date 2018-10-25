@@ -35,6 +35,8 @@ class Node():
 	param x: int - hoanh do
 	param y: int - tung do
 	param data: 2Dlist - ma tran chua cac diem
+	return True - di duoc
+	return False - khong di duoc
 	'''
 	def check(self,data):
 		size = len(data)
