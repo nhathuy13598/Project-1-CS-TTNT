@@ -36,7 +36,7 @@ def A(start:Node,goal:Node,matrix:list):
 
 		# Mo rong nut
 		close.append(x)
-		sub = x.subNode(goal,close,matrix)
+		sub = x.subNode(goal,matrix)
 		for i in sub:
 			if not close.is_contains(i):
 				open.put(i)
