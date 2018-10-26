@@ -41,7 +41,7 @@ class Node():
 			if (x_new >= 0) and (x_new < size) and (y_new >= 0) and (y_new < size):
 				if data[x_new][y_new] == 0:
 					a = Node(x_new,y_new,self)
-					a.g = 1
+					a.g = self.g+1
 					a.f = a.heuristic(goal) + a.g
 					a.stt = i
 					sub.append(a)
