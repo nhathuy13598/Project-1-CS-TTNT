@@ -27,6 +27,7 @@ class Node():
 	'''@subNode
 	param goal: node - node dich
 	param data: 2Dlist - ma tran chua cac diem
+	param closeNode: list - danh sach cac nut dong
 	return: list - mang chua cac diem mo rong
 	'''
 	def subNode(self,goal,closedNode,data:list):
