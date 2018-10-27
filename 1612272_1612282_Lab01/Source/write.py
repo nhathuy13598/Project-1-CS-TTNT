@@ -1,4 +1,4 @@
-from Class import ClassNode
+﻿import ClassNode
 
 #-------------------------------Ghi file-------------------------------------------#
 def writeFile(filename,mode,data):
