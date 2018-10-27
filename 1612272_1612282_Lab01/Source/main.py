@@ -1,9 +1,9 @@
-import sys
-import ThuatToan
+﻿import sys
+import algorithm
 import read
 import write
-from Class.ClassNode import Node
-from Class.ClassMyList import mylist
+from ClassNode import Node
+from ClassMyList import mylist
 from queue import PriorityQueue
 
 
@@ -13,7 +13,8 @@ def main():
 
 		# Doc file - return tuple(data,start,goal)
 		file = read.openfile(sys.argv[1],"r")
-
+		if file == False:
+			return False
 		# Lay ma tran
 		matrix = file[0]
 
@@ -28,7 +29,7 @@ def main():
 
 
 		# Giai bai toan
-		result = mylist(ThuatToan.A(start,goal,matrix))
+		result = mylist(algorithm.A(start,goal,matrix))
 
 		# In ra loi giai
 		if len(result) != 0:
